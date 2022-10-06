@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'cseruet'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C688175EEFC445C1BE69D869DD4F50B6 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E59F59033D494E2D824314C1CCFFD92B }}
           package: .
