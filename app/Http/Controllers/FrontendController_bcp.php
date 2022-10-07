@@ -17,20 +17,12 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        // echo $posts_trending;
-        // dd();
         $categories = Category::where('active', 1)->get();
         $posts = DB::table('posts')
             ->join('categories', 'categories.id', 'posts.category_id')
             ->select('posts.*', 'categories.category_name')
-            ->where('posts.active', 1)
-            ->orderBy('posts.id', 'DESC')
-            ->take(12)
             ->get();
-        $posts_trending = Post::orderBy('view_count','DESC')
-                                        ->take(6)
-                                        ->where('active', 1)
-                                        ->get();
+        $posts_trending = Post::orderBy('view_count','DESC')->get();
         // echo $posts_trending;
         // dd();
         return view('frontend.home.index', ['categories' => $categories,'posts' => $posts,'posts_trending'=>$posts_trending]);
@@ -53,38 +45,6 @@ class FrontendController extends Controller
         // $post->save();
 
         return view('frontend.pages.singlepost', ['categories' => $categories, 'post' => $post, 'posts_trending' => $posts_trending]);
-        // return view('frontend.pages.singlepost');
-    }
-    public function post_search(Request $request)
-    {
-        // dd($request);
-        // echo $request->search;
-        // die();
-
-        // $post = DB::table('posts')
-        //     ->join('categories', 'categories.id', 'posts.category_id')
-        //     ->select('posts.*', 'categories.category_name')
-        //     ->where('posts.id',$id)
-        //     ->get();
-        $categories = Category::where('active', 1)->get();
-
-        $posts_trending = Post::orderBy('view_count', 'DESC')->get();
-        // DB::table('posts')
-        //     ->join('categories', 'categories.id', 'posts.category_id')
-        //     ->select('posts.*', 'categories.category_name')
-        //     ->where('posts.active', 1)
-        //     ->orderBy('posts.id', 'DESC')
-        //     ->take(12)
-        //     ->get();
-        $posts = Post::where('active', 1)
-            ->where('post_name','like',"%{$request->search}%")
-            // ->orWhere()
-            ->orderBy('posts.id', 'DESC')
-            ->take(12)
-            ->get();
-        return $posts;
-
-        return view('frontend.pages.search', ['categories' => $categories, 'posts' => $posts, 'posts_trending' => $posts_trending]);
         // return view('frontend.pages.singlepost');
     }
     public function category_view($id)

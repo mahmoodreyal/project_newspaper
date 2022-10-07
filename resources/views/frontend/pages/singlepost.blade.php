@@ -11,7 +11,7 @@
                 <div class="b-bottom">
                     <h5 class="top"><a href="#">{{ $post->post_title }}</a></h5>
                     <p class="sub">{{ $post->long_description }}</p>
-                    <p>On {{ $post->created_at }} <a class="span_link" href="#"><span
+                    <p>On {{\Carbon\Carbon::parse($post->created_at)->format('d M H:i')}} <a class="span_link" href="#"><span
                                 class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span
                                 class="glyphicon glyphicon-eye-open"></span>{{ $post->view_count }} </a></p>
 

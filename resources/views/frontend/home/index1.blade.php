@@ -33,7 +33,7 @@ RUET PEDIA
                                     <a href="{{  route('postView',['id'=>$trending->id]) }}">{{ $trending->post_title}}</a>
                                 </h5>
                                 <div class="td-post-date two">
-                                    <i class="glyphicon glyphicon-time"></i>{{ $trending->created_at}}
+                                    <i class="glyphicon glyphicon-time"></i>{{\Carbon\Carbon::parse($trending->created_at)->format('d M H:i')}}
                                     <a href="#"><i class="glyphicon glyphicon-comment"></i>0
                                     </a>
                                 </div>

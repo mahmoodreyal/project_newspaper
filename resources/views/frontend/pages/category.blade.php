@@ -15,7 +15,7 @@
         <h1>News Found For this Category.</h1>
         @endif
         @break;
-        @endforeach 
+        @endforeach
     </h3>
 
 
@@ -36,7 +36,7 @@
                         {{ $post->short_description}}
                     </span>
                     <span>
-                        On {{ $post->created_at}}
+                        On {{\Carbon\Carbon::parse($post->created_at)->format('d M H:i')}}
                         <span class="glyphicon glyphicon-comment"></span>0
                         <span class="glyphicon glyphicon-eye-open"></span>
                         {{$post->view_count}}

@@ -48,7 +48,7 @@
             </h3>
 
             <p>
-                On {{ $post_trending->created_at}}
+                On {{\Carbon\Carbon::parse($post_trending->created_at)->format('d M H:i')}}
                 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>{{
                     $post_trending->view_count}} </a>
                 <a class="span_link" href="{{  route('postView',['id'=>$post_trending->id]) }}"><span class="glyphicon glyphicon-circle-arrow-right"></span></a>
@@ -98,7 +98,7 @@
 
 
         <!-- New Card -->
-        
+
         <div class="recent-card">
         @foreach ($posts as $post)
             <div class="item-1">
@@ -113,9 +113,9 @@
                             {{ $post->short_description}}
                         </span>
                         <span>
-                            On {{ $post->created_at}}
-                            <span class="glyphicon glyphicon-comment"></span>0 
-                            <span class="glyphicon glyphicon-eye-open"></span> 
+                            On {{\Carbon\Carbon::parse($post->created_at)->format('d M H:i')}}
+                            <span class="glyphicon glyphicon-comment"></span>0
+                            <span class="glyphicon glyphicon-eye-open"></span>
                             {{$post->view_count}}
                             <span class="glyphicon glyphicon-circle-arrow-right"></span>
                         </span>
@@ -124,7 +124,7 @@
             </div>
             @endforeach
         </div>
-        
+
         <div class="clearfix"></div>
         <!-- New Card -->
 
